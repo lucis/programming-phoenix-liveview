@@ -1,0 +1,14 @@
+<section class="row">
+  <h1>Admin Dashboard</h1>
+</section>
+<%= live_component @socket,
+      PentoWeb.SurveyResultsLive,
+      id: @survey_results_component_id %>
+
+<%= live_component @socket,
+      PentoWeb.UserActivityLive,
+      id: @user_activity_component_id %>
+
+<%= live_component @socket,
+      PentoWeb.ProductSalesLive,
+      id: @product_sales_component_id %>

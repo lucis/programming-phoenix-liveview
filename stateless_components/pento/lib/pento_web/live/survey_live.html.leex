@@ -1,0 +1,6 @@
+<section class="row">
+  <h1>Survey</h1>
+</section>
+<%= live_component @socket,
+      PentoWeb.DemographicLive.FormComponent,
+      user: @current_user%>

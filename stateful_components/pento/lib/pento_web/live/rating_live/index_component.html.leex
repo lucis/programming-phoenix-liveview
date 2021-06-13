@@ -1,0 +1,21 @@
+<div class="survey-component-container">
+  <h2>Ratings <%= if ratings_complete?(@products) do %>
+    <i class='fa fa-check survey'></i>
+    <% end %>
+  </h2>
+  <%= for {product, index} <- Enum.with_index(@products) do %>
+    <%= if rating = List.first(product.ratings) do %>
+      <%= live_component @socket,
+          PentoWeb.RatingLive.ShowComponent,
+          rating: rating,
+          product: product%>
+    <% else %>
+    <%= live_component @socket,
+          PentoWeb.RatingLive.FormComponent,
+          user: @current_user,
+          product: product,
+          product_index: index,
+          id: "product-#{product.id}-form" %>
+    <% end %>
+  <% end %>
+</div>

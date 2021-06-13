@@ -1,0 +1,23 @@
+<div class="survey-component-container">
+  <section class="row">
+  <h4><%= @product.name %></h4>
+  </section>
+  <section class="row">
+  <%= f = form_for @changeset, "#",
+    id: "rating-form",
+    phx_target: @myself,
+    phx_change: "validate",
+    phx_submit: "save" %>
+    <section class="row">
+      <%= label f, :stars%>
+      <%= select f, :stars, Enum.reverse(1..5) %>
+      <%= error_tag f, :stars %>
+
+      <%= hidden_input f, :user_id%>
+      <%= hidden_input f, :product_id%>
+
+      <%= submit "Save", phx_disable_with: "Saving..." %>
+    </section>
+  </form>
+  </section>
+</div>

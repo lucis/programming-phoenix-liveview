@@ -1,0 +1,25 @@
+<div class="survey-component-container">
+  <section class="row">
+    <h2>Demographics</h2>
+  </section>
+
+  <section class="row">
+    <%= f = form_for @changeset, "#",
+      phx_submit: "save",
+      phx_change: "validate",
+      id: "demographic-form"%>
+
+      <%= label f, :gender %>
+      <%= select f, :gender, ["female", "male", "other", "prefer not to say"] %>
+      <%= error_tag f, :gender %>
+
+      <%= label f, :year_of_birth %>
+      <%= select f, :year_of_birth, Enum.reverse(1940..2020)%>
+      <%= error_tag f, :year_of_birth %>
+
+      <%= hidden_input f, :user_id %>
+
+      <%= submit "Save", phx_disable_with: "Saving..." %>
+    </form>
+  </section>
+</div>
